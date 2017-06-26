@@ -15,6 +15,11 @@ app.use(
 
 app.use(require('webpack-hot-middleware')(compiler))
 
+app.get('/api', function(req, res) {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify({ salutation: 'hi' }));
+})
+
 app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, 'index.html'))
 })
